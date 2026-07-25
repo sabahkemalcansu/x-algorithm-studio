@@ -1,0 +1,26 @@
+name: smoke
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  fixture-report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: doctor + fixture demo
+        run: |
+          chmod +x scripts/*.sh
+          make doctor
+          make demo-fixture
+          test -f out/latest/report.html
+          test -f out/latest/results.json
+      - name: upload report
+        uses: actions/upload-artifact@v4
+        with:
+          name: aha-report
+          path: out/latest/

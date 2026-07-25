@@ -1,0 +1,10 @@
+services:
+  demo:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    volumes:
+      - ../out:/app/out
+      - ../fixtures:/app/fixtures:ro
+      - ../scripts:/app/scripts:ro
+    working_dir: /app

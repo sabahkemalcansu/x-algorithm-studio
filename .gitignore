@@ -1,0 +1,25 @@
+# Outputs
+out/
+*.pyc
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+.env
+
+# OS / IDE
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Artifact cache (local); never commit multi-GB weights
+.cache/
+artifacts/
+*.npz
+*.npz.*
+
+# Upstream local clones if not using submodule path correctly
+vendor/x-algorithm/phoenix/artifacts/oss-phoenix-artifacts/

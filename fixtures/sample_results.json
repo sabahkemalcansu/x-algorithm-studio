@@ -1,0 +1,123 @@
+{
+  "run_meta": {
+    "studio_version": "0.1.0",
+    "upstream_commit": "fixture",
+    "artifact_sha": "sample",
+    "duration_s": 0,
+    "generated_at": "2026-07-26T00:00:00+00:00",
+    "mode": "fixture",
+    "note": "Offline sample for aha report + agent learning without 3GB artifacts"
+  },
+  "user": {
+    "id": "sample_sports_fan",
+    "label": "Sample sports fan (demo history)",
+    "history": [
+      { "hint": "NFL", "post_id": "1842910041001", "actions": ["favorite", "dwell"] },
+      { "hint": "NBA", "post_id": "1842885511002", "actions": ["favorite"] },
+      { "hint": "NHL", "post_id": "1842751191003", "actions": ["dwell", "video_view"] }
+    ]
+  },
+  "corpus": {
+    "name": "sports_corpus (upstream-style demo)",
+    "size": 537412,
+    "note": "Illustrative size matching public mini Phoenix sports demo"
+  },
+  "pipeline": {
+    "retrieved_k": 200,
+    "ranked_k": 10,
+    "stages": ["history", "retrieval", "ranking", "report"]
+  },
+  "weights_note": "Final scores are illustrative weighted sums for teaching.",
+  "items": [
+    {
+      "rank": 1,
+      "post_id": "1843018820199",
+      "author_id": "551002",
+      "source": "retrieval",
+      "hint": "NBA highlight clip",
+      "scores": { "favorite": 0.72, "reply": 0.18, "dwell": 0.81, "block": 0.03 },
+      "final": 2.14
+    },
+    {
+      "rank": 2,
+      "post_id": "1842994411204",
+      "author_id": "228441",
+      "source": "retrieval",
+      "hint": "NFL game recap",
+      "scores": { "favorite": 0.65, "reply": 0.14, "dwell": 0.70, "block": 0.04 },
+      "final": 1.91
+    },
+    {
+      "rank": 3,
+      "post_id": "1842970033881",
+      "author_id": "77003",
+      "source": "retrieval",
+      "hint": "NHL goal replay",
+      "scores": { "favorite": 0.58, "reply": 0.11, "dwell": 0.76, "block": 0.02 },
+      "final": 1.87
+    },
+    {
+      "rank": 4,
+      "post_id": "1842956610042",
+      "author_id": "119300",
+      "source": "retrieval",
+      "hint": "transfer rumor",
+      "scores": { "favorite": 0.49, "reply": 0.22, "dwell": 0.55, "block": 0.08 },
+      "final": 1.44
+    },
+    {
+      "rank": 5,
+      "post_id": "1842941008820",
+      "author_id": "88211",
+      "source": "retrieval",
+      "hint": "fantasy tip",
+      "scores": { "favorite": 0.44, "reply": 0.09, "dwell": 0.60, "block": 0.05 },
+      "final": 1.31
+    },
+    {
+      "rank": 6,
+      "post_id": "1842928877101",
+      "author_id": "30012",
+      "source": "retrieval",
+      "hint": "stats thread",
+      "scores": { "favorite": 0.40, "reply": 0.16, "dwell": 0.52, "block": 0.06 },
+      "final": 1.18
+    },
+    {
+      "rank": 7,
+      "post_id": "1842915500193",
+      "author_id": "66440",
+      "source": "retrieval",
+      "hint": "press conference",
+      "scores": { "favorite": 0.33, "reply": 0.07, "dwell": 0.48, "block": 0.04 },
+      "final": 1.02
+    },
+    {
+      "rank": 8,
+      "post_id": "1842900034410",
+      "author_id": "1055",
+      "source": "retrieval",
+      "hint": "betting spam-ish",
+      "scores": { "favorite": 0.28, "reply": 0.05, "dwell": 0.22, "block": 0.19 },
+      "final": 0.41
+    },
+    {
+      "rank": 9,
+      "post_id": "1842887712008",
+      "author_id": "91882",
+      "source": "retrieval",
+      "hint": "off-topic meme",
+      "scores": { "favorite": 0.15, "reply": 0.04, "dwell": 0.30, "block": 0.11 },
+      "final": 0.36
+    },
+    {
+      "rank": 10,
+      "post_id": "1842871005544",
+      "author_id": "20001",
+      "source": "retrieval",
+      "hint": "low-relevance listicle",
+      "scores": { "favorite": 0.12, "reply": 0.03, "dwell": 0.18, "block": 0.07 },
+      "final": 0.22
+    }
+  ]
+}

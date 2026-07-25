@@ -1,0 +1,21 @@
+x-algorithm-studio
+Copyright 2026 x-algorithm-studio contributors
+
+This product includes software developed as a community studio around
+the public X For You algorithm sources.
+
+----
+
+Upstream dependency (vendored / submodule):
+
+  xai-org/x-algorithm
+  https://github.com/xai-org/x-algorithm
+  Copyright xAI / contributors as stated in that repository
+  Licensed under the Apache License, Version 2.0
+
+Phoenix demo model artifacts, when downloaded, remain subject to the
+terms and notices provided by the upstream project.
+
+This project is NOT affiliated with, endorsed by, or sponsored by X Corp.
+or xAI. It does not reconstruct live production ranking or your personal
+X timeline.
