@@ -41,7 +41,7 @@ Created by **Sabah Kemal** — see [`OWNER.md`](OWNER.md).
 ## Quick start (human, offline, ~2 minutes)
 
 ```bash
-git clone <your-repo-url> x-algorithm-studio
+git clone https://github.com/sabahkemal/x-algorithm-studio.git
 cd x-algorithm-studio
 make doctor
 make demo-fixture
