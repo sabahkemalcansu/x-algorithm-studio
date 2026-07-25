@@ -47,7 +47,7 @@ Created by **Sabah Kemal** ([@sabahkemalll](https://x.com/sabahkemalll) on X) â€
 ## Quick start (human, offline, ~2 minutes)
 
 ```bash
-git clone https://github.com/sabahkemal/x-algorithm-studio.git
+git clone https://github.com/sabahkemalcansu/x-algorithm-studio.git
 cd x-algorithm-studio
 make doctor
 make demo-fixture
