@@ -1,0 +1,15 @@
+---
+description: x-algorithm-studio agent rules (English-only global product)
+globs:
+  - "**/*"
+---
+
+# x-algorithm-studio
+
+- Follow root `AGENTS.md` and `docs/agent-loop.md`.
+- Product language is **English only**.
+- Prefer `make demo-fixture` before claiming anything about ranking output.
+- Never claim live production X ranking or invent production weights as fact.
+- Do not casually edit `vendor/x-algorithm/`; extend under `extensions/` and `presets/`.
+- Teach mechanism literacy, not spam growth hacks.
+- After scoring changes, run `make explain` when `results.json` exists.

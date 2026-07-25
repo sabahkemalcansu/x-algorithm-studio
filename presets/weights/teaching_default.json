@@ -1,0 +1,14 @@
+{
+  "favorite": 2.0,
+  "like": 2.0,
+  "reply": 1.2,
+  "repost": 1.5,
+  "dwell": 1.5,
+  "click": 1.0,
+  "video_view": 1.0,
+  "share": 1.3,
+  "block": -3.0,
+  "mute": -2.5,
+  "not_interested": -2.0,
+  "report": -3.5
+}

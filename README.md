@@ -59,11 +59,27 @@ See upstream `phoenix/README.md` if LFS fails.
 
 ## For coding agents (the big unlock)
 
-1. Open this folder in Claude Code, Cursor, Codex, or Grok Build.  
-2. Paste the prompt in [`agent/PROMPT_DROP_IN.md`](agent/PROMPT_DROP_IN.md).  
-3. Agent must read `AGENTS.md` → `docs/curriculum.md` → explain → optional extension task.
+**Global product — English only.**
 
-Eval rubric: [`agent/eval/checklist.md`](agent/eval/checklist.md).
+1. Open this folder in Claude Code, Cursor, Codex, or Grok Build.  
+2. Paste [`agent/PROMPT_DROP_IN.md`](agent/PROMPT_DROP_IN.md).  
+3. Agent follows the loop in [`docs/agent-loop.md`](docs/agent-loop.md):  
+   read curriculum → `make demo-fixture` → teach-back → self-check → extend.  
+4. Built-in tools agents can run immediately:
+
+```bash
+make agent-smoke   # fixture report + ExplainScorer
+make explain       # why #1 ranked up (teaching weights)
+```
+
+| Resource | Purpose |
+|----------|---------|
+| [`AGENTS.md`](AGENTS.md) | Mandatory rules |
+| [`agent/`](agent/) | Drop-in prompt, tasks, eval |
+| [`extensions/scorers/`](extensions/scorers/) | Explain + reweight |
+| [`presets/`](presets/) | User histories + weight packs |
+
+Eval: [`agent/eval/checklist.md`](agent/eval/checklist.md) (≥5/6 before “ready to extend”).
 
 ---
 

@@ -12,13 +12,20 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: doctor + fixture demo
+      - name: doctor + agent-smoke
         run: |
           chmod +x scripts/*.sh
           make doctor
-          make demo-fixture
+          make agent-smoke
           test -f out/latest/report.html
           test -f out/latest/results.json
+          test -f out/latest/explain.json
+      - name: reweight smoke
+        run: |
+          python3 extensions/scorers/reweight.py \
+            --weights presets/weights/anti_negative.json \
+            --output out/latest/results_anti_negative.json
+          test -f out/latest/results_anti_negative.json
       - name: upload report
         uses: actions/upload-artifact@v4
         with:

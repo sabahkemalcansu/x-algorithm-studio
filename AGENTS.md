@@ -4,19 +4,27 @@ You are working in **x-algorithm-studio**: a community package that makes the
 public [xai-org/x-algorithm](https://github.com/xai-org/x-algorithm) Phoenix demo
 easy to **run**, easy to **understand**, and safe to **extend**.
 
-## Mission (in order)
+**Language policy:** English only (docs, reports, code comments, user-facing
+explanations). This product targets a global audience.
+
+## Mission (strict order)
 
 1. **Understand** the ranking mental model (not “most likes win”).
-2. **Run** `make demo-fixture` (always) or full `make demo-native` if artifacts exist.
-3. **Explain** in plain **English** using `docs/teach-script.md` tone.
-4. **Extend** only under `extensions/`, `presets/`, `docs/`, `scripts/`, `agent/`.
+2. **Run** `make demo-fixture` (always first) or full `make demo-native` if artifacts exist.
+3. **Explain** in plain English (`docs/teach-script.md` tone).
+4. **Self-check** against `agent/eval/checklist.md` (need ≥5/6).
+5. **Extend** only under allowed paths (below).
+6. **Re-run** fixture/report or `make explain` after code changes.
+
+Full loop detail: `docs/agent-loop.md`.
 
 ## Hard non-goals
 
 - Do **not** claim this is live X production ranking or a user’s real timeline.
-- Do **not** invent production weight values.
+- Do **not** invent production weight values as fact.
 - Do **not** rewrite `vendor/x-algorithm` casually; treat it as pinned upstream.
-- Do **not** give spammy “game the algorithm” playbooks; teach **mechanism literacy**.
+- Do **not** write spammy “game the algorithm” playbooks; teach **mechanism literacy**.
+- Do **not** add non-English product UI or docs.
 
 ## Mandatory read order
 
@@ -24,8 +32,9 @@ easy to **run**, easy to **understand**, and safe to **extend**.
 2. `docs/scoring.md`
 3. `docs/code-map.md`
 4. `docs/pitfalls.md`
-5. `out/latest/report.html` **or** generate via `make demo-fixture`
-6. `extensions/README.md` before coding extensions
+5. `docs/agent-loop.md`
+6. Generate or open `out/latest/report.html` via `make demo-fixture`
+7. `extensions/README.md` before coding extensions
 
 ## Mental model (must internalize)
 
@@ -38,14 +47,17 @@ User history
   → ranked feed
 ```
 
-Demo focus: public **mini Phoenix** retrieval → ranking on a **sports** corpus + example user.
+Demo focus: public **mini Phoenix** retrieval → ranking on a **sports** corpus
++ example user. Studio also ships an offline **fixture** so agents can learn
+without 3GB artifacts.
 
 ## Commands
 
 ```bash
 make doctor
 make demo-fixture    # offline aha report (preferred first step)
-make open
+make open            # open HTML report
+make explain         # run ExplainScorer on out/latest/results.json
 make vendor && make pull && make demo-native   # full model when possible
 ```
 
@@ -63,16 +75,35 @@ make vendor && make pull && make demo-native   # full model when possible
 | `presets/users/` | Alternate histories |
 | `presets/weights/` | Teaching weight packs |
 | `scripts/` | DX only |
-| `docs/` | Curriculum |
+| `docs/` | Curriculum (English) |
+| `agent/` | Tasks & eval |
+
+**Forbidden for casual edits:** `vendor/x-algorithm/**` (read-only unless
+intentionally bumping the pin).
+
+## Built-in extension: ExplainScorer
+
+After `make demo-fixture`:
+
+```bash
+make explain
+# or: python3 extensions/scorers/explain.py
+```
+
+Writes human-readable drivers to stdout and `out/latest/explain.json`.
 
 ## After learning — pick a task
 
-- `agent/tasks/01-summarize.md`
-- `agent/tasks/02-explain-report.md`
-- `agent/tasks/03-add-preset-user.md`
-- `agent/tasks/04-explain-scorer.md`
+| Task | File | Outcome |
+|------|------|---------|
+| Summarize | `agent/tasks/01-summarize.md` | 10 English bullets |
+| Explain report | `agent/tasks/02-explain-report.md` | #1 vs low rank story |
+| Preset user | `agent/tasks/03-add-preset-user.md` | new history JSON |
+| ExplainScorer | `agent/tasks/04-explain-scorer.md` | already shipped — improve or fork |
+| Weight pack | `agent/tasks/05-weight-pack.md` | teaching reweight experiment |
 
-Self-check: `agent/eval/checklist.md`.
+Self-check: `agent/eval/checklist.md`  
+Concept rubric: `agent/eval/golden-summary.md`
 
 ## Output quality bar
 
@@ -80,3 +111,8 @@ Self-check: `agent/eval/checklist.md`.
 - Mention **multi-action** + **negative** weights
 - One sentence on **candidate isolation** if asked about the transformer
 - Always include the **public demo ≠ production** disclaimer
+- English only
+
+## Drop-in entry
+
+Humans paste: `agent/PROMPT_DROP_IN.md`

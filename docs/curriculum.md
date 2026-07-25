@@ -66,6 +66,14 @@ Studio demo emphasizes Phoenix-style retrieval→rank teaching surface.
 - Spam patterns raise negative probability mass.  
 - This is **literacy**, not a guaranteed growth hack.
 
-## 8) Next
+## 8) Agent path
 
-`docs/scoring.md` → `docs/code-map.md` → `make demo-fixture` → `agent/tasks/…`
+If you are a coding agent, continue with **`docs/agent-loop.md`** (full loop + eval).
+
+## 9) Next (humans)
+
+`docs/scoring.md` → `make demo-fixture` → `make explain` → optional `agent/tasks/…`
+
+## 10) Language
+
+All product surfaces are **English** for a global audience.

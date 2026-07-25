@@ -6,7 +6,7 @@ ROOT := $(abspath $(dir $(lastword $(MAKEFILE_LIST))))
 export STUDIO_ROOT := $(ROOT)
 export PYTHONPATH := $(ROOT)/scripts:$(PYTHONPATH)
 
-.PHONY: help doctor pull vendor demo demo-native demo-fixture report report-fixture open clean
+.PHONY: help doctor pull vendor demo demo-native demo-fixture report report-fixture open explain agent-smoke clean
 
 help: ## Show targets
 	@echo "x-algorithm-studio — Run · Understand · Extend"
@@ -18,6 +18,8 @@ help: ## Show targets
 	@echo "  make demo-native    Native uv/python path"
 	@echo "  make demo-fixture   Offline aha report from fixtures (no model)"
 	@echo "  make report         Re-render HTML from out/latest/results.json"
+	@echo "  make explain        ExplainScorer on out/latest/results.json"
+	@echo "  make agent-smoke    Fixture + explain (agent CI path)"
 	@echo "  make open           Open out/latest/report.html"
 	@echo "  make clean          Remove out/"
 	@echo ""
@@ -55,6 +57,17 @@ report: ## Render aha HTML from last results.json
 	@echo "✔ Wrote out/latest/report.html"
 
 report-fixture: demo-fixture
+
+explain: ## Teaching breakdown of scores (requires results.json)
+	@test -f "$(ROOT)/out/latest/results.json" || (echo "No results.json — run make demo-fixture first"; exit 1)
+	@python3 "$(ROOT)/extensions/scorers/explain.py" \
+		--input "$(ROOT)/out/latest/results.json" \
+		--output "$(ROOT)/out/latest/explain.json"
+
+agent-smoke: demo-fixture explain ## Offline path agents must keep green
+	@test -f "$(ROOT)/out/latest/report.html"
+	@test -f "$(ROOT)/out/latest/explain.json"
+	@echo "✔ agent-smoke OK (fixture report + explain)"
 
 open: ## Open report in browser (macOS)
 	@test -f "$(ROOT)/out/latest/report.html" || (echo "No report — run make demo-fixture"; exit 1)

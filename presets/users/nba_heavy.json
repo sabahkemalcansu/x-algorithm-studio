@@ -1,0 +1,12 @@
+{
+  "id": "nba_heavy",
+  "label": "NBA-heavy sports fan (preset for experiments)",
+  "history": [
+    { "hint": "NBA", "post_id": "preset_nba_001", "actions": ["favorite", "dwell", "video_view"] },
+    { "hint": "NBA", "post_id": "preset_nba_002", "actions": ["favorite", "reply"] },
+    { "hint": "NBA", "post_id": "preset_nba_003", "actions": ["dwell"] },
+    { "hint": "NBA", "post_id": "preset_nba_004", "actions": ["favorite"] },
+    { "hint": "NFL", "post_id": "preset_nfl_light", "actions": ["dwell"] }
+  ],
+  "notes": "Teaching preset only. Wire into live Phoenix runs via custom history export when available."
+}

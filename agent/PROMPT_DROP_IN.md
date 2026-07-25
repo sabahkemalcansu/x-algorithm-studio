@@ -1,28 +1,36 @@
 # Drop-in prompt (copy into Claude / Cursor / Codex / Grok)
 
-```text
-You are in the x-algorithm-studio repo.
+English-only. Global product.
 
-1) Read AGENTS.md (mandatory rules).
+```text
+You are in the x-algorithm-studio repo (English-only, global audience).
+
+Follow docs/agent-loop.md end-to-end:
+
+1) Read AGENTS.md (mandatory rules + non-goals).
 2) Read docs/curriculum.md, docs/scoring.md, docs/pitfalls.md.
-3) Run: make demo-fixture
-   Then open/read out/latest/report.html (or the generated HTML path).
-4) Explain in clear English how the public For You demo ranks posts.
-   Must cover: history → retrieval → multi-action scores → positives vs negatives.
-   Must NOT claim this is live production X.
-5) Self-check with agent/eval/checklist.md.
-6) If checks pass, implement agent/tasks/04-explain-scorer.md under extensions/
-   (or 03-add-preset-user.md if you prefer a smaller first step).
+3) Run: make agent-smoke
+   (or: make demo-fixture && make explain)
+4) Read out/latest/report.html and out/latest/explain.json.
+5) Teach-back in clear English (10 bullets):
+   history → retrieval → multi-action scores → positives vs negatives.
+   MUST NOT claim live production X or invent production weights.
+6) Self-check agent/eval/checklist.md (need ≥5/6).
+7) Then implement ONE of:
+   - agent/tasks/05-weight-pack.md  (recommended: shows rank swaps)
+   - agent/tasks/03-add-preset-user.md
+   - improve extensions/scorers/explain.py (task 04 stretch)
 
 Optimize for the human reaction:
 "Hmm, so this is how posts get scored — that's why some things surface."
 
-Respond in English only.
+Respond in English only. Put new code under extensions/ or presets/ only.
 ```
 
 ## Shorter variant
 
 ```text
-Read AGENTS.md + docs/curriculum.md. Run make demo-fixture.
-Teach me For You ranking in 10 English bullets (public demo only), then do task 04-explain-scorer.
+Read AGENTS.md + docs/agent-loop.md. Run make agent-smoke.
+Explain For You ranking in 10 English bullets (public demo only),
+pass agent/eval/checklist.md, then do agent/tasks/05-weight-pack.md.
 ```
