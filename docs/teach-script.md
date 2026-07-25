@@ -23,6 +23,6 @@ Always pair:
 
 “So when something always lands on your feed, the system is betting you’ll engage — and not reject it. Public demo teaches that shape; live X adds more systems on top.”
 
-## Languages
+## Language
 
-Prefer the user’s language. TR aha report is first-class; EN for global README.
+Product UI, docs, and agent prompts are **English only**.

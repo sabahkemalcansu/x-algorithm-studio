@@ -7,4 +7,4 @@ Produce **10 bullet points** a non-ML reader understands:
 - negative weights  
 - demo ≠ production  
 
-Language: match the user. No growth-hack spam.
+Language: English only. No growth-hack spam.

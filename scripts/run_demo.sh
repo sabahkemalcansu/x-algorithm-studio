@@ -72,8 +72,7 @@ fi
 
 python3 "$ROOT/scripts/render_aha_report.py" \
   --input "$OUT/results.json" \
-  --output "$OUT/report.html" \
-  --lang tr
+  --output "$OUT/report.html"
 
 echo ""
 echo "✔ Demo complete in ${DURATION}s"

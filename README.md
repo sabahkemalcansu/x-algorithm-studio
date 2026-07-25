@@ -7,7 +7,8 @@
 
 Not affiliated with X or xAI.  
 Does **not** reconstruct your live timeline or production weights.  
-Built on [`xai-org/x-algorithm`](https://github.com/xai-org/x-algorithm) (Apache-2.0).
+Built on [`xai-org/x-algorithm`](https://github.com/xai-org/x-algorithm) (Apache-2.0).  
+**Language:** English only (docs, report UI, agent prompts).
 
 ---
 

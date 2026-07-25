@@ -12,7 +12,7 @@
 - **ExplainScorer** — top 3 drivers per item (fav/dwell/block contributions)  
 - **Preset users** — “NBA-only fan”, “casual” histories  
 - **Weight packs** — `engagement_max.toml` vs `anti_negative.toml` (post-hoc teaching reweight)  
-- **Bilingual report** — `--lang en` already supported in renderer  
+- **Richer aha copy** — improve English teaching text in `render_aha_report.py`
 
 ## Contract for post-hoc reweight (teaching)
 

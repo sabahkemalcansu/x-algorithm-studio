@@ -42,8 +42,7 @@ demo-fixture: ## No GPU/JAX — render aha report from sample JSON
 	@cp "$(ROOT)/fixtures/sample_results.json" "$(ROOT)/out/latest/results.json"
 	@python3 "$(ROOT)/scripts/render_aha_report.py" \
 		--input "$(ROOT)/out/latest/results.json" \
-		--output "$(ROOT)/out/latest/report.html" \
-		--lang tr
+		--output "$(ROOT)/out/latest/report.html"
 	@echo ""
 	@echo "✔ Fixture demo ready → out/latest/report.html"
 	@echo "  make open"
@@ -52,8 +51,7 @@ report: ## Render aha HTML from last results.json
 	@test -f "$(ROOT)/out/latest/results.json" || (echo "No out/latest/results.json — run make demo or make demo-fixture"; exit 1)
 	@python3 "$(ROOT)/scripts/render_aha_report.py" \
 		--input "$(ROOT)/out/latest/results.json" \
-		--output "$(ROOT)/out/latest/report.html" \
-		--lang tr
+		--output "$(ROOT)/out/latest/report.html"
 	@echo "✔ Wrote out/latest/report.html"
 
 report-fixture: demo-fixture

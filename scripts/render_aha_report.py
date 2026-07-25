@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render plain-language AHA HTML report from results.json."""
+"""Render plain-language AHA HTML report from results.json (English only)."""
 
 from __future__ import annotations
 
@@ -31,45 +31,29 @@ def pick_scores(item: dict[str, Any]) -> tuple[float, float, float]:
     return fav, dwell, block
 
 
-def render(data: dict[str, Any], lang: str) -> str:
-    tr = lang.startswith("tr")
+def render(data: dict[str, Any]) -> str:
     meta = data.get("run_meta") or {}
     user = data.get("user") or {}
     corpus = data.get("corpus") or {}
     pipe = data.get("pipeline") or {}
     items: list[dict[str, Any]] = data.get("items") or []
 
-    title = "For You nasıl seçiyor? — 2 dakikalık özet" if tr else "How For You ranks — 2‑minute brief"
+    title = "How For You ranks — 2-minute brief"
     lead = (
-        "Bu rapor, X’in açık kaynak public Phoenix demosunu çalıştırdıktan sonra üretilir. "
-        "Amaç formül ezberletmek değil: <strong>neden bazı içerikler üste çıkar</strong> fikrini oturtmak."
-        if tr
-        else "This report is produced after running the public Phoenix demo from x-algorithm. "
+        "This report is produced after running the public Phoenix demo from x-algorithm. "
         "Goal: understand <strong>why some posts surface</strong> — not memorize formulas."
     )
     one_liner = (
-        "Sana daha önce ne yaptıysan, ona benzeyen adayları bulur; her aday için “ne yaparsın?” diye tahmin eder; "
-        "tahminleri skora çevirip sıraya dizer."
-        if tr
-        else "It recalls what you engaged with, retrieves similar candidates, predicts what you’ll do next, "
+        "It recalls what you engaged with, retrieves similar candidates, predicts what you’ll do next, "
         "turns those predictions into a score, and sorts."
     )
 
-    steps = (
-        [
-            ("Seni hatırlar", "Geçmiş like / dwell / video gibi aksiyonların."),
-            ("Aday toplar", "Büyük havuzdan sana yakın görünenleri çeker (demo: spor corpus)."),
-            ("Skorlar", "Beğenir misin? Uzun bakar mısın? Bloklar mısın? …"),
-            ("Sıraya dizer", "Pozitif tahminler yukarı, negatifler aşağı."),
-        ]
-        if tr
-        else [
-            ("Remembers you", "Your past likes, dwells, video views, …"),
-            ("Retrieves candidates", "Pulls nearby items from a large pool (demo: sports corpus)."),
-            ("Scores", "Will you like? Dwell? Block? …"),
-            ("Ranks", "Positives push up; negatives push down."),
-        ]
-    )
+    steps = [
+        ("Remembers you", "Your past likes, dwells, video views, …"),
+        ("Retrieves candidates", "Pulls nearby items from a large pool (demo: sports corpus)."),
+        ("Scores", "Will you like? Dwell? Block? …"),
+        ("Ranks", "Positives push up; negatives push down."),
+    ]
 
     top = items[0] if items else None
     low = None
@@ -89,12 +73,11 @@ def render(data: dict[str, Any], lang: str) -> str:
         <div class="tweet" style="border-left-color:{border};background:{bg}">
           <div class="who">{esc(heading)}</div>
           <div class="meta">rank {esc(it.get('rank'))} · post {esc(it.get('post_id'))} · final {esc(it.get('final'))}
-
           {f' · {esc(hint)}' if hint else ''}</div>
           <div class="bars">
-            <div class="row"><span>{"Beğeni" if tr else "Favorite"}</span>{bar(fav, "good")}</div>
-            <div class="row"><span>{"Uzun bakma" if tr else "Dwell"}</span>{bar(dwell, "good")}</div>
-            <div class="row"><span>{"Block" if tr else "Block"}</span>{bar(block, "bad")}</div>
+            <div class="row"><span>Favorite</span>{bar(fav, "good")}</div>
+            <div class="row"><span>Dwell</span>{bar(dwell, "good")}</div>
+            <div class="row"><span>Block</span>{bar(block, "bad")}</div>
           </div>
         </div>
         """
@@ -124,27 +107,15 @@ def render(data: dict[str, Any], lang: str) -> str:
           <span class="chip">{esc(acts)}</span>
         </div>"""
 
-    takeaways = (
-        [
-            "Feed = “en çok like alan” listesi değil; senin geçmişine göre tahmin.",
-            "Önce aday bulunur (retrieval), sonra çoklu skor ile sıralanır (ranking).",
-            "Pozitif etkileşim yukarı, negatif (block/mute) aşağı çeker.",
-            "“Fenomen / önüme düşme” sihir değil — modelin yüksek pozitif / düşük negatif görmesi (demo ölçeğinde böyle okunur).",
-        ]
-        if tr
-        else [
-            "The feed is not “most likes win”; it’s predicted for you from history.",
-            "First retrieve candidates, then multi-action rank.",
-            "Positive actions lift; negatives (block/mute) bury.",
-            "“Going viral” isn’t magic here — high positive / low negative predictions (demo-scale reading).",
-        ]
-    )
+    takeaways = [
+        "The feed is not “most likes win”; it’s predicted for you from history.",
+        "First retrieve candidates, then multi-action rank.",
+        "Positive actions lift; negatives (block/mute) bury.",
+        "“Going viral” isn’t magic here — high positive / low negative predictions (demo-scale reading).",
+    ]
 
     disc = (
-        "Dürüst not: Bu <strong>public demo mekanizması</strong>. Canlı X timeline’ın, production weight’ler ve ads burada yok. "
-        "Yine de “neden bazı postlar yapışır?” sorusunun doğru zihinsel modeli budur."
-        if tr
-        else "Honest note: this is the <strong>public demo mechanism</strong>. Not your live X timeline or production weights. "
+        "Honest note: this is the <strong>public demo mechanism</strong>. Not your live X timeline or production weights. "
         "It still teaches the right mental model for why posts surface."
     )
 
@@ -156,7 +127,7 @@ def render(data: dict[str, Any], lang: str) -> str:
 
     mode = esc(meta.get("mode", "unknown"))
     return f"""<!DOCTYPE html>
-<html lang="{ 'tr' if tr else 'en' }">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -218,10 +189,10 @@ def render(data: dict[str, Any], lang: str) -> str:
       <div class="pill">studio: <b>{esc(meta.get('studio_version'))}</b></div>
     </div>
 
-    <h2>{"1 · Tek cümlede" if tr else "1 · One sentence"}</h2>
+    <h2>1 · One sentence</h2>
     <div class="card"><p class="big">{esc(one_liner)}</p></div>
 
-    <h2>{"2 · Demo kullanıcısı" if tr else "2 · Demo user"}</h2>
+    <h2>2 · Demo user</h2>
     <div class="card">
       <p><strong>{esc(user.get('label') or user.get('id'))}</strong></p>
       {hist_html or '<p class="muted">—</p>'}
@@ -231,30 +202,30 @@ def render(data: dict[str, Any], lang: str) -> str:
       </p>
     </div>
 
-    <h2>{"3 · 4 adım" if tr else "3 · 4 steps"}</h2>
+    <h2>3 · 4 steps</h2>
     <div class="steps">{steps_html}</div>
 
-    <h2>{"4 · Skor aslında bu" if tr else "4 · Scoring"}</h2>
+    <h2>4 · Scoring</h2>
     <div class="card">
       <div class="formula">Final ≈ <span class="pos">+ w·P(like) + w·P(dwell) + …</span><br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="neg">− w·P(block) − w·P(mute) − …</span></div>
-      <p class="disc">{"Aha: sadece like yetmez; negatif sinyaller skoru gömer." if tr else "Aha: likes alone aren’t enough; negatives can bury a post."}</p>
+      <p class="disc">Aha: likes alone aren’t enough; negatives can bury a post.</p>
     </div>
 
-    <h2>{"5 · Somut örnek" if tr else "5 · Concrete example"}</h2>
+    <h2>5 · Concrete example</h2>
     <div class="card">
-      {item_card(top, "#1 — " + ("neden üstte?" if tr else "why on top?"), True)}
-      {item_card(low, ("Alt sıra — neden geride?" if tr else "Lower rank — why behind?"), False)}
+      {item_card(top, "#1 — why on top?", True)}
+      {item_card(low, "Lower rank — why behind?", False)}
     </div>
 
-    <h2>{"6 · Aklında kalsın" if tr else "6 · Takeaways"}</h2>
+    <h2>6 · Takeaways</h2>
     <div class="takeaway">
       <ul>{take_html}</ul>
     </div>
     <p class="disc">{disc}</p>
 
     <details>
-      <summary>{"Teknik tablo (detay)" if tr else "Technical table (details)"}</summary>
+      <summary>Technical table (details)</summary>
       <div class="card" style="margin-top:12px;overflow-x:auto">
         <table>
           <thead>
@@ -280,14 +251,13 @@ def render(data: dict[str, Any], lang: str) -> str:
 
 
 def main() -> None:
-    ap = argparse.ArgumentParser()
+    ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--input", type=Path, required=True)
     ap.add_argument("--output", type=Path, required=True)
-    ap.add_argument("--lang", default="tr", help="tr or en")
     args = ap.parse_args()
 
     data = json.loads(args.input.read_text(encoding="utf-8"))
-    html_out = render(data, args.lang)
+    html_out = render(data)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(html_out, encoding="utf-8")
     print(f"✔ wrote {args.output}")

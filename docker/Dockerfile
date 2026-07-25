@@ -16,4 +16,4 @@ ENV STUDIO_ROOT=/app
 RUN mkdir -p /app/out/latest
 
 # Default: fixture demo (always works, teaches the product surface)
-CMD ["bash", "-lc", "python3 /app/scripts/render_aha_report.py --input /app/fixtures/sample_results.json --output /app/out/latest/report.html --lang tr && cp /app/fixtures/sample_results.json /app/out/latest/results.json && echo '✔ report at /app/out/latest/report.html' && ls -la /app/out/latest"]
+CMD ["bash", "-lc", "python3 /app/scripts/render_aha_report.py --input /app/fixtures/sample_results.json --output /app/out/latest/report.html && cp /app/fixtures/sample_results.json /app/out/latest/results.json && echo '✔ report at /app/out/latest/report.html' && ls -la /app/out/latest"]

@@ -8,7 +8,7 @@ easy to **run**, easy to **understand**, and safe to **extend**.
 
 1. **Understand** the ranking mental model (not “most likes win”).
 2. **Run** `make demo-fixture` (always) or full `make demo-native` if artifacts exist.
-3. **Explain** in plain language using `docs/teach-script.md` tone.
+3. **Explain** in plain **English** using `docs/teach-script.md` tone.
 4. **Extend** only under `extensions/`, `presets/`, `docs/`, `scripts/`, `agent/`.
 
 ## Hard non-goals
