@@ -2,29 +2,36 @@
 
 This folder turns **x-algorithm-studio** into a drop-in curriculum for coding agents.
 
-## Fast path
+## Fast path (for humans)
 
-1. Open the repo root in Claude Code, Cursor, Codex, or Grok Build.  
-2. Paste [`PROMPT_DROP_IN.md`](PROMPT_DROP_IN.md).  
-3. Agent follows `AGENTS.md` → `docs/agent-loop.md`.  
-4. Humans verify with [`eval/checklist.md`](eval/checklist.md).
+1. Open the repo in Claude Code, Cursor, Codex, or Grok Build.  
+2. Paste **[`PROMPT_DROP_IN.md`](PROMPT_DROP_IN.md)** into the agent.  
+3. You should receive a **guided first message**:  
+   Welcome → what/why → expectations → capabilities → Questions / Demo / Build.  
+4. Pick a path; the agent deepens from there (`SESSION_PROTOCOL.md` + `docs/agent-loop.md`).  
+5. Quality bar: [`eval/checklist.md`](eval/checklist.md).
+
+If the agent skips the welcome and jumps into code, re-paste the short prompt in `PROMPT_DROP_IN.md`.
 
 ## Layout
 
 ```text
-PROMPT_DROP_IN.md   # copy-paste for social / README
-tasks/              # graded practice
-eval/               # checklist + golden rubric
+PROMPT_DROP_IN.md      # what users paste (entry)
+SESSION_PROTOCOL.md    # mandatory first-turn host script
+FIRST_TURN_EXAMPLE.md  # gold-standard welcome tone
+tasks/                 # graded practice after Build
+eval/                  # checklist + golden rubric
 ```
 
 ## Design goals
 
 | Goal | How |
 |------|-----|
-| Agent *actually* learns the mechanism | Mandatory read order + fixture evidence |
+| Product-feeling session | SESSION_PROTOCOL welcome flow |
+| Agent *actually* learns | agent-loop + fixture evidence + checklist |
 | Safe coding | Extensions only; vendor read-only |
 | Global audience | English only |
-| Measurable | checklist ≥5/6 before “ready to extend” |
+| Measurable grasp | checklist ≥5/6; can restate 4-step model |
 
 ## Offline first
 

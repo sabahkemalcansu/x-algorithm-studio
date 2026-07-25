@@ -61,25 +61,38 @@ See upstream `phoenix/README.md` if LFS fails.
 
 **Global product — English only.**
 
+### What users do
+
 1. Open this folder in Claude Code, Cursor, Codex, or Grok Build.  
-2. Paste [`agent/PROMPT_DROP_IN.md`](agent/PROMPT_DROP_IN.md).  
-3. Agent follows the loop in [`docs/agent-loop.md`](docs/agent-loop.md):  
-   read curriculum → `make demo-fixture` → teach-back → self-check → extend.  
-4. Built-in tools agents can run immediately:
+2. Paste **[`agent/PROMPT_DROP_IN.md`](agent/PROMPT_DROP_IN.md)** (the whole copy block).  
+
+### What they should see first (product session)
+
+The agent’s **first reply** must follow [`agent/SESSION_PROTOCOL.md`](agent/SESSION_PROTOCOL.md):
+
+1. **Welcome** — owner + thanks ([`OWNER.md`](OWNER.md))  
+2. **What this is / why it exists**  
+3. **What you can do / what to expect**  
+4. **Capability set** ([`docs/capabilities.md`](docs/capabilities.md))  
+5. **Continue** — Questions · Demo · Build  
+
+Example tone: [`agent/FIRST_TURN_EXAMPLE.md`](agent/FIRST_TURN_EXAMPLE.md).
+
+### After they pick a path
+
+| Path | Agent does |
+|------|------------|
+| Questions | Teach from curriculum / scoring / capabilities |
+| Demo | `make demo-fixture` (+ `make explain`) and walk the report |
+| Build | `make agent-smoke` → extension task under `extensions/` / `presets/` |
+
+Deeper technical loop: [`docs/agent-loop.md`](docs/agent-loop.md).  
+Eval: [`agent/eval/checklist.md`](agent/eval/checklist.md) (≥5/6 = solid grasp).
 
 ```bash
 make agent-smoke   # fixture report + ExplainScorer
 make explain       # why #1 ranked up (teaching weights)
 ```
-
-| Resource | Purpose |
-|----------|---------|
-| [`AGENTS.md`](AGENTS.md) | Mandatory rules |
-| [`agent/`](agent/) | Drop-in prompt, tasks, eval |
-| [`extensions/scorers/`](extensions/scorers/) | Explain + reweight |
-| [`presets/`](presets/) | User histories + weight packs |
-
-Eval: [`agent/eval/checklist.md`](agent/eval/checklist.md) (≥5/6 before “ready to extend”).
 
 ---
 

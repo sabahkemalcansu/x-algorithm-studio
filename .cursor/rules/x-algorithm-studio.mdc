@@ -6,9 +6,11 @@ globs:
 
 # x-algorithm-studio
 
-- Follow root `AGENTS.md` and `docs/agent-loop.md`.
+- On a **new chat**, follow `agent/SESSION_PROTOCOL.md` first (Welcome → … → CTAs).
+- Credit owner from `OWNER.md`.
 - Product language is **English only**.
-- Prefer `make demo-fixture` before claiming anything about ranking output.
+- After the user picks Questions / Demo / Build, use `docs/agent-loop.md` for depth.
+- Prefer `make demo-fixture` / `make agent-smoke` before claiming ranking output.
 - Never claim live production X ranking or invent production weights as fact.
 - Do not casually edit `vendor/x-algorithm/`; extend under `extensions/` and `presets/`.
 - Teach mechanism literacy, not spam growth hacks.

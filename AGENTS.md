@@ -9,14 +9,24 @@ explanations). This product targets a global audience.
 
 ## Mission (strict order)
 
+### On a new human session (drop-in / first message)
+
+0. **Host the user** — follow `agent/SESSION_PROTOCOL.md` **before** deep tooling:
+   Welcome (from `OWNER.md`) → what/why → expectations → capabilities → CTAs  
+   (Questions / Demo / Build).  
+   See `agent/FIRST_TURN_EXAMPLE.md` for tone.
+
+### Then (after they choose a path)
+
 1. **Understand** the ranking mental model (not “most likes win”).
-2. **Run** `make demo-fixture` (always first) or full `make demo-native` if artifacts exist.
+2. **Run** `make demo-fixture` / `make agent-smoke` when demo or build is chosen.
 3. **Explain** in plain English (`docs/teach-script.md` tone).
-4. **Self-check** against `agent/eval/checklist.md` (need ≥5/6).
+4. **Self-check** against `agent/eval/checklist.md` (need ≥5/6) before “fully grasped”.
 5. **Extend** only under allowed paths (below).
 6. **Re-run** fixture/report or `make explain` after code changes.
 
-Full loop detail: `docs/agent-loop.md`.
+Full technical loop: `docs/agent-loop.md`.  
+Capability map for §4 of the welcome: `docs/capabilities.md`.
 
 ## Hard non-goals
 
@@ -113,6 +123,13 @@ Concept rubric: `agent/eval/golden-summary.md`
 - Always include the **public demo ≠ production** disclaimer
 - English only
 
-## Drop-in entry
+## Drop-in entry (what humans share)
 
-Humans paste: `agent/PROMPT_DROP_IN.md`
+| File | Who uses it |
+|------|-------------|
+| `agent/PROMPT_DROP_IN.md` | **Paste this into the coding agent** |
+| `agent/SESSION_PROTOCOL.md` | Agent must execute on first turn |
+| `OWNER.md` | Welcome credit + thanks |
+| `docs/capabilities.md` | Capability set for welcome §4 |
+
+Humans should say: “Paste `agent/PROMPT_DROP_IN.md` into Claude/Cursor/Grok.”

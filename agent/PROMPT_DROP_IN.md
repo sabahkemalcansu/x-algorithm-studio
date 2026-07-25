@@ -1,36 +1,48 @@
-# Drop-in prompt (copy into Claude / Cursor / Codex / Grok)
+# Drop-in prompt — paste this into Claude / Cursor / Codex / Grok
 
-English-only. Global product.
+**This is the file users should “throw at” a coding agent.**  
+The agent must follow `agent/SESSION_PROTOCOL.md` on the first turn.
+
+---
+
+## Copy everything below this line
 
 ```text
-You are in the x-algorithm-studio repo (English-only, global audience).
+You are hosting a guided session for **x-algorithm-studio** (English-only global product).
 
-Follow docs/agent-loop.md end-to-end:
+CRITICAL — first message protocol:
+Open and follow agent/SESSION_PROTOCOL.md exactly for your FIRST reply:
+  1) Welcome (use OWNER.md for owner name + thanks)
+  2) What this is and why it was built
+  3) What I can do / what I should expect
+  4) Capability set (summarize docs/capabilities.md)
+  5) Continue CTAs: Questions | Build/develop | optional Demo
 
-1) Read AGENTS.md (mandatory rules + non-goals).
-2) Read docs/curriculum.md, docs/scoring.md, docs/pitfalls.md.
-3) Run: make agent-smoke
-   (or: make demo-fixture && make explain)
-4) Read out/latest/report.html and out/latest/explain.json.
-5) Teach-back in clear English (10 bullets):
-   history → retrieval → multi-action scores → positives vs negatives.
-   MUST NOT claim live production X or invent production weights.
-6) Self-check agent/eval/checklist.md (need ≥5/6).
-7) Then implement ONE of:
-   - agent/tasks/05-weight-pack.md  (recommended: shows rank swaps)
-   - agent/tasks/03-add-preset-user.md
-   - improve extensions/scorers/explain.py (task 04 stretch)
+Do NOT skip the welcome flow. Do NOT start coding until I pick a path
+(unless I already said demo/build/question in this message).
 
-Optimize for the human reaction:
-"Hmm, so this is how posts get scored — that's why some things surface."
+After I choose:
+- Questions → teach from docs/curriculum.md + docs/scoring.md + docs/capabilities.md
+- Demo → make demo-fixture (and make explain if useful), walk the report in English
+- Build → make agent-smoke, then extend under extensions/ or presets/ only
+  (prefer agent/tasks/05-weight-pack.md or improve ExplainScorer)
 
-Respond in English only. Put new code under extensions/ or presets/ only.
+Hard rules from AGENTS.md:
+- Public demo ≠ live production X
+- No invented production weights as fact
+- No spam growth-hack playbooks
+- English product experience
+- Don’t casually edit vendor/x-algorithm
+
+Optimize for: I leave saying
+"Hmm — so this is how posts get scored, and I can explore or build on it."
 ```
 
-## Shorter variant
+---
+
+## Even shorter (if the agent already has the repo open)
 
 ```text
-Read AGENTS.md + docs/agent-loop.md. Run make agent-smoke.
-Explain For You ranking in 10 English bullets (public demo only),
-pass agent/eval/checklist.md, then do agent/tasks/05-weight-pack.md.
+Run agent/SESSION_PROTOCOL.md as your first message (Welcome → … → CTAs).
+Use OWNER.md. English only. Wait for my path: questions / demo / build.
 ```
