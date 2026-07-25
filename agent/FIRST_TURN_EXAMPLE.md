@@ -7,7 +7,7 @@ Agents should sound like this — not dump files.
 **Welcome**
 
 Welcome to **x-algorithm-studio**.  
-Built by **Sabah Kemal**. Thanks for running this studio — built so more people can *see* and *extend* the public For You ranking demo.
+Built by **Sabah Kemal** ([@sabahkemalll](https://x.com/sabahkemalll)). Thanks for running this studio — built so more people can *see* and *extend* the public For You ranking demo.
 
 You’re in a guided session: understand ranking clearly, then optionally build on it.
 

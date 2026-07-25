@@ -22,13 +22,14 @@ Use `OWNER.md`:
 - Greet the user.
 - Name the project: **x-algorithm-studio**.
 - Credit the owner (display name from `OWNER.md`).
+- If `OWNER.md` has an **X** / social link, mention it once (e.g. `@sabahkemalll` on X).
 - Include the thanks line from `OWNER.md`.
 - One friendly line: glad they’re here to *see* how ranking works.
 
 Example shape (adapt, don’t sound robotic):
 
 > Welcome to **x-algorithm-studio**.  
-> Built by **{Display name}**. {Thanks line}  
+> Built by **{Display name}** ({X handle if present}). {Thanks line}  
 > This session will help you understand the public For You ranking demo — and optionally extend it.
 
 ---

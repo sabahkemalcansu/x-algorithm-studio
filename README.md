@@ -11,7 +11,7 @@ Does **not** reconstruct your live timeline or production weights.
 Built on [`xai-org/x-algorithm`](https://github.com/xai-org/x-algorithm) (Apache-2.0).  
 **Language:** English only (docs, report UI, agent prompts) — global product.
 
-Created by **Sabah Kemal** — see [`OWNER.md`](OWNER.md).
+Created by **Sabah Kemal** ([@sabahkemalll](https://x.com/sabahkemalll) on X) — see [`OWNER.md`](OWNER.md).
 
 ### Preview (offline aha report)
 
